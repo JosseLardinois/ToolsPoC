@@ -52,27 +52,27 @@ public class WeatherService : IWeatherService
                 }
                 return "Cold weather";
             }
-            else if (item.TemperatureC == 10)
+            if (item.TemperatureC == 10)
             {
                 return "Chilly weather";
             }
-            else if (item.TemperatureC == 15)
+            if (item.TemperatureC == 15)
             {
                 return "Not that hot";
             }
-            else if (item.TemperatureC == 20)
+            if (item.TemperatureC == 20)
             {
                 return "Pleasant weather";
             }
-            else if (item.TemperatureC == 25)
+            if (item.TemperatureC == 25)
             {
                 return "Hot weather";
             }
-            else if (item.TemperatureC == 30)
+            if (item.TemperatureC == 30)
             {
                 return "Very hot weather";
             }
-            else if (item.TemperatureC == 30)
+            if (item.TemperatureC == 30)
             {
                 return "Very hot weather";
             }
