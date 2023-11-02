@@ -35,9 +35,9 @@ public class WeatherForecastController : ControllerBase
         return _weatherService.GetForecasts();
     }
     [HttpGet("GetDuplicateForecasts")]
-    public string GetWeatherComment()
+    public IActionResult GetWeatherComment()
     {
-        return _weatherService.GetSpecificForecast();
+        return Ok(_weatherService.GetSpecificForecast());
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using ToolsPoC.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using ToolsPoC.Interfaces;
 using ToolsPoC.Models;
 
 public class WeatherService : IWeatherService
@@ -80,4 +81,59 @@ public class WeatherService : IWeatherService
 
         return "No clue what weather it is";
     }
+
+    public string GetSpecific2Forecast()
+    {
+        var forecasts = _weatherDAL.GetForecasts();
+
+        if (!forecasts.Any())
+        {
+            return "No forecasts available";
+        }
+
+        foreach (var item in forecasts)
+        {
+            if (item.TemperatureC < 10)
+            {
+                if (item.TemperatureC > 8)
+                {
+
+                    if (item.TemperatureC < 7)
+                    {
+                        return "very very cold";
+                    }
+                    return "very cold";
+                }
+                return "Cold weather";
+            }
+            if (item.TemperatureC == 10)
+            {
+                return "Chilly weather";
+            }
+            if (item.TemperatureC == 15)
+            {
+                return "Not that hot";
+            }
+            if (item.TemperatureC == 20)
+            {
+                return "Pleasant weather";
+            }
+            if (item.TemperatureC == 25)
+            {
+                return "Hot weather";
+            }
+            if (item.TemperatureC == 30)
+            {
+                return "Very hot weather";
+            }
+            if (item.TemperatureC == 30)
+            {
+                return "Very hot weather";
+            }
+        }
+
+        return "No clue what weather it is";
+    }
+
+
 }
