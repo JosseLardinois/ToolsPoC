@@ -1,5 +1,4 @@
 using ToolsPoC.Interfaces;
-using ToolsPoC.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

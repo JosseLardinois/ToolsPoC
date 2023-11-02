@@ -5,5 +5,6 @@ namespace ToolsPoC.Interfaces
     public interface IWeatherService
     {
         IEnumerable<WeatherForecast> GetForecasts();
+        string GetSpecificForecast();
     }
 }

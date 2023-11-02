@@ -1,26 +1,43 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using ToolsPoC.Interfaces;
 using ToolsPoC.Models;
-using ToolsPoC.Service;
 
-namespace ToolsPoC.Controllers
+[ApiController]
+[Route("[controller]")]
+public class WeatherForecastController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    private readonly IWeatherService _weatherService;
+
+    public WeatherForecastController(IWeatherService weatherService)
     {
-        private readonly IWeatherService _weatherService;
-
-        public WeatherForecastController(IWeatherService weatherService)
-        {
-            _weatherService = weatherService;
-        }
-
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return _weatherService.GetForecasts();
-        }
+        _weatherService = weatherService;
     }
+
+    [HttpGet]
+    public IEnumerable<WeatherForecast> Get()
+    {
+        return _weatherService.GetForecasts();
+    }
+
+    // Added to increase code complexity and coupling
+    [HttpGet("GetDetailedForecasts")]
+    public IEnumerable<WeatherForecast> GetDetailedForecasts()
+    {
+        var forecasts = _weatherService.GetForecasts();
+        // Complex logic can be added here
+        return forecasts;
+    }
+
+    // Added to increase code duplication
+    [HttpGet("GetDuplicateForecasts")]
+    public IEnumerable<WeatherForecast> GetDuplicateForecasts()
+    {
+        return _weatherService.GetForecasts();
+    }
+    [HttpGet("GetDuplicateForecasts")]
+    public string GetWeatherComment()
+    {
+        return _weatherService.GetSpecificForecast();
+    }
+
 }

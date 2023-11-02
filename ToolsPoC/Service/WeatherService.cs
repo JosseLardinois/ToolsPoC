@@ -1,22 +1,74 @@
-﻿using System.Collections.Generic;
-using ToolsPoC.DAL;
-using ToolsPoC.Interfaces;
+﻿using ToolsPoC.Interfaces;
 using ToolsPoC.Models;
 
-namespace ToolsPoC.Service
+public class WeatherService : IWeatherService
 {
-    public class WeatherService : IWeatherService
+    private readonly WeatherDAL _weatherDAL;
+
+    public WeatherService()
     {
-        private readonly WeatherDAL _weatherDAL;
+        _weatherDAL = new WeatherDAL();
+    }
 
-        public WeatherService()
+    public IEnumerable<WeatherForecast> GetForecasts()
+    {
+        return _weatherDAL.GetForecasts();
+    }
+
+    // Added to increase code complexity
+    public IEnumerable<WeatherForecast> GetComplexForecasts()
+    {
+        // Complex logic can be added here
+        return _weatherDAL.GetForecasts();
+    }
+
+    // Added to increase code duplication
+    public IEnumerable<WeatherForecast> GetDuplicateForecasts()
+    {
+        return _weatherDAL.GetForecasts();
+    }
+
+ public string GetSpecificForecast()
+    {
+        var forecasts = _weatherDAL.GetForecasts();
+
+        if (!forecasts.Any())
         {
-            _weatherDAL = new WeatherDAL();
+            return "No forecasts available";
         }
 
-        public IEnumerable<WeatherForecast> GetForecasts()
+        foreach (var item in forecasts)
         {
-            return _weatherDAL.GetForecasts();
+            if (item.TemperatureC < 10)
+            {
+                return "Cold weather";
+            }
+            else if (item.TemperatureC == 10)
+            {
+                return "Chilly weather";
+            }
+            else if (item.TemperatureC == 15)
+            {
+                return "Not that hot";
+            }
+            else if (item.TemperatureC == 20)
+            {
+                return "Pleasant weather";
+            }
+            else if (item.TemperatureC == 25)
+            {
+                return "Hot weather";
+            }
+            else if (item.TemperatureC == 30)
+            {
+                return "Very hot weather";
+            }
+            else if (item.TemperatureC == 30)
+            {
+                return "Very hot weather";
+            }
         }
+
+        return "No clue what weather it is";
     }
 }
