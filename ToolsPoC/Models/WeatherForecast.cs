@@ -1,4 +1,4 @@
-namespace ToolsPoC
+namespace ToolsPoC.Models
 {
     public class WeatherForecast
     {
