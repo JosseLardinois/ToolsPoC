@@ -41,6 +41,15 @@ public class WeatherService : IWeatherService
         {
             if (item.TemperatureC < 10)
             {
+                if(item.TemperatureC > 8)
+                {
+                   
+                    if (item.TemperatureC < 7)
+                    {
+                        return "very very cold";
+                    }
+                    return "very cold";
+                }
                 return "Cold weather";
             }
             else if (item.TemperatureC == 10)
