@@ -73,10 +73,6 @@ public class WeatherService : IWeatherService
             {
                 return "Very hot weather";
             }
-            if (item.TemperatureC == 30)
-            {
-                return "Very hot weather";
-            }
         }
 
         return "No clue what weather it is";
